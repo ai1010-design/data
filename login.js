@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBZ_VA2uWutlwhEwUSCsNfs_A-37hLWM1s",
   authDomain: "fast-data-f239c.firebaseapp.com",
@@ -12,11 +11,9 @@ const firebaseConfig = {
   measurementId: "G-H4XVSBVQT7"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Handle login form
 const form = document.getElementById("loginForm");
 const loginMessage = document.getElementById("loginMessage");
 
@@ -31,9 +28,9 @@ form.addEventListener("submit", async (e) => {
     loginMessage.style.color = "green";
     loginMessage.textContent = "Login successful! Redirecting...";
 
-    // Redirect after login
-    window.location.href = "dashboard.html"; // Change to your main page
-
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 2000);
   } catch (error) {
     loginMessage.style.color = "red";
     loginMessage.textContent = `Error: ${error.message}`;
