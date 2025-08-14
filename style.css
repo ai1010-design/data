@@ -99,3 +99,16 @@ tbody tr:hover {
 }
 
 th {
+  font-weight: 600;
+}
+
+/* ====== Responsive ====== */
+@media screen and (max-width: 500px) {
+  form, table {
+    width: 90%;
+  }
+  
+  th, td {
+    padding: 10px 12px;
+  }
+}
