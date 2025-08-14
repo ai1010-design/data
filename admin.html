@@ -2,103 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - Fast Data</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-    }
-    header {
-      background: #2E8B57;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
-    nav {
-      background: #4CAF50;
-      padding: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      padding: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background: #4CAF50;
-      color: white;
-    }
-    .contact-box {
-      background: white;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-  </style>
+  <title>Admin Panel</title>
 </head>
 <body>
-
-<header>
-  <h1>Fast Data - Admin Dashboard</h1>
-</header>
-
-<nav>
-  <a href="index.html">Home</a>
-  <a href="registration.html">Register</a>
-  <a href="login.html">Login</a>
-  <a href="admin.html">Admin</a>
-</nav>
-
-<div class="container">
-  <h2>Registered Users</h2>
-  <table>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>4-Digit PIN</th>
-    </tr>
-    <tr>
-      <td>JohnDoe</td>
-      <td>john@example.com</td>
-      <td>08012345678</td>
-      <td>1234</td>
-    </tr>
-    <tr>
-      <td>JaneSmith</td>
-      <td>jane@example.com</td>
-      <td>08087654321</td>
-      <td>5678</td>
-    </tr>
+  <h2>Admin Panel - Registered Users</h2>
+  <table border="1" id="usersTable">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>4-digit PIN</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Users will appear here -->
+    </tbody>
   </table>
 
-  <div class="contact-box">
-    <h3>Customer Service Contact</h3>
-    <p>WhatsApp: +234 801 234 5678</p>
-    <p>Email: support@fastdata.com</p>
-  </div>
-</div>
-
+  <script type="module" src="admin.js"></script>
 </body>
 </html>
