@@ -14,13 +14,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
+document.body.innerHTML = "<h3>Loading...</h3>";
+
 onAuthStateChanged(auth, (user) => {
-  if (!user) {
+  if (user) {
+    document.body.innerHTML = `
+      <h2>Welcome to the Dashboard, ${user.email}</h2>
+      <button id="logoutBtn">Logout</button>
+    `;
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await signOut(auth);
+      window.location.href = "login.html";
+    });
+  } else {
     window.location.href = "login.html";
   }
-});
-
-document.getElementById("logoutBtn").addEventListener("click", async () => {
-  await signOut(auth);
-  window.location.href = "login.html";
 });
