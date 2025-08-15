@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Data</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="firebase-config.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Buy Data</h2>
+        <label for="network">Select Network</label>
+        <select id="network">
+            <option value="mtn">MTN</option>
+            <option value="glo">Glo</option>
+            <option value="airtel">Airtel</option>
+            <option value="9mobile">9mobile</option>
+        </select>
+
+        <label for="plan">Select Data Plan</label>
+        <select id="plan">
+            <option value="500">500MB - ₦100</option>
+            <option value="1000">1GB - ₦200</option>
+            <option value="2000">2GB - ₦400</option>
+        </select>
+
+        <label for="phone">Recipient Phone</label>
+        <input type="tel" id="phone" placeholder="08012345678">
+
+        <button onclick="payWithPaystack()">Proceed to Payment</button>
+        <br><br>
+        <a href="dashboard.html">⬅ Back to Dashboard</a>
+    </div>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+        function payWithPaystack(){
+            let plan = document.getElementById("plan").value;
+            let phone = document.getElementById("phone").value;
+            let email = firebase.auth().currentUser.email;
+
+            let handler = PaystackPop.setup({
+                key: 'pk_test_your_public_key_here', // Replace with your Paystack Public Key
+                email: email,
+                amount: plan * 100, // Amount in Kobo
+                currency: "NGN",
+                callback: function(response){
+                    // Save to Firestore
+                    firebase.firestore().collection("transactions").add({
+                        user: email,
+                        phone: phone,
+                        plan: plan,
+                        status: "success",
+                        ref: response.reference,
+                        date: new Date()
+                    }).then(() => {
+                        alert("Payment Successful! Your data will be processed.");
+                        window.location.href = "dashboard.html";
+                    });
+                },
+                onClose: function(){
+                    alert('Transaction was not completed.');
+                }
+            });
+            handler.openIframe();
+        }
+    </script>
+</body>
+</html>
