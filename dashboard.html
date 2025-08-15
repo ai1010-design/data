@@ -1,50 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dashboard • Fast Data</title>
-<link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <title>Dashboard - Fast Data</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<header>
-<h1>Fast Data</h1>
-<nav>
-<a href="dashboard.html">Home</a>
-<a href="buy-data.html">Buy Data</a>
-<a href="buy-airtime.html">Airtime</a>
-<a href="subscriptions.html">Subscriptions</a>
-<a href="admin.html" id="adminLink" style="display:none;">Admin</a>
-<a href="#" id="logoutBtn">Logout</a>
-</nav>
-</header>
+    <header>
+        <h1>🚀 Fast Data Dashboard</h1>
+        <p>Welcome back, <span id="username"></span>!</p>
+    </header>
 
-
-<div class="container">
-<div class="card" style="margin-bottom:16px">
-<h3 id="greeting">Loading…</h3>
-<p>Wallet Balance: <b id="wallet">₦0</b> (demo)</p>
-</div>
-
-
-<div class="grid">
-<div class="card tile" onclick="location.href='buy-data.html'">
-<i class="fas fa-wifi"></i><p>Buy Data</p>
-</div>
-<div class="card tile" onclick="location.href='buy-airtime.html'">
-<i class="fas fa-phone"></i><p>Buy Airtime</p>
-</div>
-<div class="card tile" onclick="location.href='subscriptions.html'">
-<i class="fas fa-bolt"></i><p>Other Subscriptions</p>
-</div>
-<div class="card tile" onclick="window.open('https://wa.me/2348000000000','_blank')">
-<i class="fas fa-headset"></i><p>Customer Service</p>
-</div>
-</div>
-
-
-<div class="card" style="margin-top:16px">
-<h3>Recent Transactions</h3>
-<table class="table" id="txTable">
-<thead><tr><th>Type</th><th>Details</th><th>Amount</th><th>Status</th><th>Date</th></tr></t
+    <main class="dashboard">
+        <div class="card" onclick="location.href='buy-data.html'">
+            <i class="fa-solid fa-wifi"></i>
+            <h3>Buy Data</h3>
+        </div>
+        <div class="card" onclick="location.href='buy-airtime.html'">
+            <i class="fa-solid fa-phone"></i>
+            <h3>Buy Airtime</h3>
+        </div>
+        <div class="card" onclick="location.href='subscriptions.html'">
+            <i class="fa-solid fa-tv"></i>
+            <h3>Subscriptions</h3>
+        </div>
+        <div class="card" onclick="location.href='transactions.html'">
+            <i class="fa-solid fa-receipt"></i>
+            <h3>Transaction History</h3>
+        </div>
+        <div class="card" onclick="location.href='customer-service.html'">
+            <i class="fa-solid fa-headset"></i>
+            <h3>Customer Service</h3>
+        </div>
+        <div class="card" onclick="location.href='admin.html'">
+            <i class="fa-solid fa-user-shield"></i>
+            <h3>Admin Panel</h3>
+        </div>
+    </main>
+</body>
+</html>
