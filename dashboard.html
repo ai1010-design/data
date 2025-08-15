@@ -1,14 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
-  <h2>Welcome to the Dashboard</h2>
-  <button id="logoutBtn">Logout</button>
+    <header>
+        <h1>My Services</h1>
+        <p id="welcomeText"></p>
+    </header>
 
-  <script type="module" src="dashboard.js"></script>
+    <section id="adminPanel" class="card" style="display:none;">
+        <h2>Admin Panel</h2>
+        <button class="btn">Manage Users</button>
+    </section>
+
+    <section class="grid">
+        <div class="card" onclick="buyData()">
+            <i class="fas fa-wifi"></i>
+            <p>Buy Data</p>
+        </div>
+        <div class="card" onclick="buyAirtime()">
+            <i class="fas fa-phone"></i>
+            <p>Buy Airtime</p>
+        </div>
+        <div class="card" onclick="otherSubs()">
+            <i class="fas fa-bolt"></i>
+            <p>Other Subscriptions</p>
+        </div>
+        <div class="card" onclick="contactSupport()">
+            <i class="fas fa-headset"></i>
+            <p>Customer Service</p>
+        </div>
+    </section>
+
+    <footer>
+        <button class="btn logout" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </footer>
+
+    <script>
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = "login.html";
+            } else {
+                document.getElementById("welcomeText").innerText = "Welcome, " + user.email;
+                if (user.email === "admin@gmail.com") {
+                    document.getElementById("adminPanel").style.display = "block";
+                }
+            }
+        });
+
+        function buyData() { alert("Redirecting to Buy Data page..."); }
+        function buyAirtime() { alert("Redirecting to Buy Airtime page..."); }
+        function otherSubs() { alert("Redirecting to Subscription page..."); }
+        function contactSupport() { alert("Opening customer service chat..."); }
+
+        function logout() {
+            firebase.auth().signOut().then(() => {
+                window.location.href = "login.html";
+            });
+        }
+    </script>
 </body>
 </html>
