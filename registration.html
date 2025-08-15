@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Register</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Account • Fast Data</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="form-container">
-    <h2>Register</h2>
-    <form id="registerForm">
-      <label>Username:</label>
-      <input type="text" id="username" required />
-
-      <label>Email:</label>
-      <input type="email" id="email" required />
-
-      <label>Password:</label>
-      <input type="password" id="password" required />
-
-      <label>4-digit PIN:</label>
-      <input type="number" id="pin" required minlength="4" maxlength="4" />
-
-      <button type="submit">Register</button>
-    </form>
-  </div>
-
-  <script type="module" src="registration.js"></script>
+<div class="auth-wrap">
+<div class="card auth-card">
+<h2>Create your account</h2>
+<form id="registerForm" class="form">
+<label>Username</label>
+<input id="username" required />
+<label>Email</label>
+<input id="email" type="email" required />
+<label>Password</label>
+<input id="password" type="password" required />
+<div class="row">
+<div>
+<label>4-digit PIN</label>
+<input id="pin" inputmode="numeric" pattern="\\d{4}" maxlength="4" required />
+</div>
+<div>
+<label>Phone (optional)</label>
+<input id="phone" />
+</div>
+</div>
+<button class="btn primary" type="submit" style="width:100%; margin-top:12px">Register</button>
+</form>
+<p style="text-align:center; margin-top:10px">Have an account? <a href="index.html">Login</a></p>
+<p id="regMsg" style="text-align:center; font-weight:700"></p>
+</div>
+</div>
+<script type="module" src="register.js"></script>
 </body>
 </html>

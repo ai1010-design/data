@@ -1,51 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fast Data - Home</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #4CAF50, #2E8B57);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5rem;
-    }
-    p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
-    a {
-      display: inline-block;
-      background: white;
-      color: #2E8B57;
-      padding: 12px 20px;
-      margin: 10px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s, color 0.3s;
-    }
-    a:hover {
-      background: #2E8B57;
-      color: white;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login • Fast Data</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Welcome to Fast Data</h1>
-  <p>Affordable and fast internet data subscription service</p>
-  
-  <a href="registration.html">Register</a>
-  <a href="login.html">Login</a>
+<div class="auth-wrap">
+<div class="card auth-card">
+<h2>Welcome back</h2>
+<p>Login to continue</p>
+<form id="loginForm" class="form">
+<label>Email</label>
+<input id="email" type="email" required />
+<label>Password</label>
+<input id="password" type="password" required />
+<button class="btn primary" type="submit" style="width:100%; margin-top:12px">Login</button>
+</form>
+<p style="text-align:center; margin-top:10px">No account? <a href="register.html">Create one</a></p>
+<p id="loginMsg" style="text-align:center; font-weight:700"></p>
+</div>
+</div>
+<script type="module" src="login.js"></script>
 </body>
 </html>
